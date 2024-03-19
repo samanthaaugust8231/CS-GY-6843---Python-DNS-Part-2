@@ -123,7 +123,7 @@ def run_dns_server():
 
                 rdata_list = []
 
-                if qtype == dns.rdatatype.AAAA:
+                if qtype == dns.rdatatype.NS:
                     for pref, server in answer_data:
                         rdata_list.append(MX(dns.rdataclass.IN, dns.rdatatype.MX, pref, server))
                 elif qtype == dns.rdatatype.SOA:
