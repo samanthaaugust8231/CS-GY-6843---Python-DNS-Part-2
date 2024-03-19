@@ -109,10 +109,10 @@ def run_dns_server():
             # Parse the request using the `dns.message.from_wire` method
             request = dns.message.from_wire(data)
             # Create a response message using the `dns.message.make_response` method
-            response = dns.message.make_response(addr)
+            response = dns.message.make_response(data)
 
             # Get the question from the request
-            question = request.question[1]
+            question = request.question[0]
             qname = question.name.to_text()
             qtype = question.rdtype
 
