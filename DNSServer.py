@@ -112,7 +112,7 @@ def run_dns_server():
             response = dns.message.make_response(request)
 
             # Get the question from the request
-            question = request.question[1]
+            question = request.question[0]
             qname = question.name.to_text()
             qtype = question.rdtype
 
@@ -123,7 +123,7 @@ def run_dns_server():
 
                 rdata_list = []
 
-                if qtype == dns.rdatatype.MX:
+                if qtype == dns.rdatatype.A:
                     for pref, server in answer_data:
                         rdata_list.append(MX(dns.rdataclass.IN, dns.rdatatype.MX, pref, server))
                 elif qtype == dns.rdatatype.SOA:
